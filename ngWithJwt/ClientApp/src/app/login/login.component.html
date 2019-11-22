@@ -1,5 +1,5 @@
 <div class="col-md-6 offset-md-3 mt-5">
-  <div *ngIf="loginForm.errors" class="alert alert-danger mt-3 mb-0">
+  <div *ngIf="loginForm.errors?.invalidLogin" class="alert alert-danger mt-3 mb-0">
     Username or Password is incorrect.
   </div>
   <div class="card">
