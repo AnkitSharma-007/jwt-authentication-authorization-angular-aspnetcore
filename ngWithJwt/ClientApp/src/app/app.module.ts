@@ -31,11 +31,11 @@ import { AdminGuard } from './guards/admin.guard';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'login', component: LoginComponent },
-      { path: 'user-home', component: UserHomeComponent, canActivate: [AuthGuard] },
-      { path: 'admin-home', component: AdminHomeComponent, canActivate: [AdminGuard] }
-    ])
+    { path: '', component: HomeComponent, pathMatch: 'full' },
+    { path: 'login', component: LoginComponent },
+    { path: 'user-home', component: UserHomeComponent, canActivate: [AuthGuard] },
+    { path: 'admin-home', component: AdminHomeComponent, canActivate: [AdminGuard] }
+], { relativeLinkResolution: 'legacy' })
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true },
