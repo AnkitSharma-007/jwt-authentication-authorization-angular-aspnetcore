@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { first } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -40,7 +39,6 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     this.authService.login(this.loginForm.value)
-      .pipe(first())
       .subscribe(
         () => {
           this.router.navigate([returnUrl]);

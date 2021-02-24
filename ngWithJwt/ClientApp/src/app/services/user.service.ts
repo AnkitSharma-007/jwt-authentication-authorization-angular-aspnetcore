@@ -1,22 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  myAppUrl = '';
-
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
   getUserData() {
-    return this.http.get('/api/user/GetUserData').pipe(map(result => result));
+    return this.http.get('/api/user/GetUserData');
   }
 
   getAdminData() {
-    return this.http.get('/api/user/GetAdminData').pipe(map(result => result));
+    return this.http.get('/api/user/GetAdminData');
   }
 }

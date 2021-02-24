@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using ngWithJwt.Models;
+using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using ngWithJwt.Models;
 
 namespace ngWithJwt.Controllers
 {
@@ -32,9 +32,10 @@ namespace ngWithJwt.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult Login([FromBody]User login)
+        public IActionResult Login([FromBody] User login)
         {
             IActionResult response = Unauthorized();
+
             User user = AuthenticateUser(login);
             if (user != null)
             {
@@ -65,7 +66,6 @@ namespace ngWithJwt.Controllers
             {
                 new Claim(JwtRegisteredClaimNames.Sub, userInfo.UserName),
                 new Claim("firstName", userInfo.FirstName.ToString()),
-                //new Claim(ClaimTypes.Role,userInfo.UserType),
                 new Claim("role",userInfo.UserType),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };

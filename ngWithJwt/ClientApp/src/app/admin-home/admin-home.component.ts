@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -6,14 +6,11 @@ import { UserService } from '../services/user.service';
   templateUrl: './admin-home.component.html',
   styleUrls: ['./admin-home.component.css']
 })
-export class AdminHomeComponent implements OnInit {
+export class AdminHomeComponent {
 
   adminData: string;
 
   constructor(private userService: UserService) { }
-
-  ngOnInit() {
-  }
 
   fetchAdminData() {
     this.userService.getAdminData().subscribe(
